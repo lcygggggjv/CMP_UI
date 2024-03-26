@@ -1,0 +1,9 @@
+selenium == 4.11.2
+PyHamcrest == 2.0.4
+allure-pytest == 2.13.2
+allure-python-commons==2.13.2
+pytest == 7.4.0
+pip==24.0
+pluggy==1.0.0
+Faker==19.2.0
+psycopg2==2.9.7
