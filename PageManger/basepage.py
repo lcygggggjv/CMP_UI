@@ -6,6 +6,8 @@ from Config.read_env import EnvironMent
 from playwright.sync_api import *
 import io
 from Config.file_path import FilePath
+import allure
+from hamcrest import assert_that, equal_to
 
 
 class BasePage:
@@ -38,7 +40,14 @@ class BasePage:
         """固投引导页 储备库列表"""
         self.page.locator("(//p[text()='储备库'])[1]").click()
 
+    def assert_allure_screenshot(self, actual, expected):
 
+        try:
+            assert_that(actual, equal_to(expected))
+        except AssertionError as e:
+            img = self.page.screenshot()
+            allure.attach(img, name="用例失败截图", attachment_type=allure.attachment_type.PNG)
+            raise AssertionError(f"断言失败：预期结果：{expected} ,!= 实际结果：{actual}") from e
 
     @staticmethod
     def get_captcha():
