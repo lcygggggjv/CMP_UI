@@ -57,7 +57,7 @@ class BasePage:
 
     def loop_assert(self, locator):
         """循环校验，alert文本框"""
-        for i in range(3):
+        for i in range(20):
             actual_info = self.page.locator(locator).is_visible()
             # print(f"这是实际{actual_info}, 第{i}次")
             if actual_info:
@@ -73,7 +73,7 @@ class BasePage:
                 return actual_info
             time.sleep(1)
 
-    def loop_find_locator3(self, locator1, locator2):
+    def loop_find_locator_two(self, locator1, locator2):
         """循环校验，alert文本框"""
         for i in range(30):
             actual1 = self.page.query_selector_all(locator1)

@@ -68,10 +68,19 @@ class Facility(BasePage):
     def create_required(self):
         """新增必填"""
 
-        self.page.locator("//p[text()='设施量清单']").click()
-        self.page.locator("//span[text()='新增设施']").click()
+        self.page.locator("//button//span[text()='新增设施']").click()
         self.page.locator("//span[text()='确认']").click()
-        count_list = self.loop_find_locator3("//div[text()='请选择']", "//div[text()='请输入']")
+        count_list = self.loop_find_locator_two("//div[text()='请选择']", "//div[text()='请输入']")
         print(count_list[0], count_list[1])
         return count_list[0], count_list[1]
-        # print(f"--实际----{send_num}, ====实际=={check_num}")
+
+    def export_file(self):
+        """导出附件"""
+
+        self.page.locator("//p[text()='设施量清单']").click()
+        self.page.locator("(//span[@class='el-checkbox__inner'])[2]").click()
+        self.page.locator("//span[text()='导出']").click()
+        self.page.locator("//button//span[text()='确定']").click()
+
+
+
